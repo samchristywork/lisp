@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "node.h"
 
@@ -85,4 +86,35 @@ void add_subexpression_child(struct expression *e, struct expression *child) {
   e->n++;
   e->children = realloc(e->children, sizeof(struct expression) * e->n);
   e->children[e->n - 1] = *child;
+}
+
+struct expression *lookup(struct environment *env, char *symbol) {
+  while (env->symbol != NULL) {
+    if (strcmp(env->symbol, symbol) == 0) {
+      return env->value;
+    }
+    env = env->next;
+  }
+  return NULL;
+}
+
+struct expression *new_float(float f) {
+  struct expression *out = malloc(sizeof(struct expression));
+  out->type = FLOAT;
+  out->floating = f;
+  return out;
+}
+
+struct expression *new_integer(int i) {
+  struct expression *out = malloc(sizeof(struct expression));
+  out->type = INTEGER;
+  out->integer = i;
+  return out;
+}
+
+struct expression *new_boolean(bool b) {
+  struct expression *out = malloc(sizeof(struct expression));
+  out->type = BOOLEAN;
+  out->boolean = b;
+  return out;
 }
