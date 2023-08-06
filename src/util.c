@@ -118,3 +118,36 @@ struct expression *new_boolean(bool b) {
   out->boolean = b;
   return out;
 }
+
+bool check_equals(struct expression *left, struct expression *right) {
+  switch (left->type) {
+  case FLOAT:
+    return left->floating == right->floating;
+  case INTEGER:
+    return left->integer == right->integer;
+  case BOOLEAN:
+    return left->boolean == right->boolean;
+  default:
+    printf("ERROR: foo\n");
+    return NULL;
+  }
+}
+
+char *get_type_name(int type) {
+  switch (type) {
+  case SYMBOL:
+    return "SYMBOL";
+  case FLOAT:
+    return "FLOAT";
+  case INTEGER:
+    return "INTEGER";
+  case LIST:
+    return "LIST";
+  case BOOLEAN:
+    return "BOOLEAN";
+  case STRING:
+    return "STRING";
+  }
+
+  return "UNKNOWN";
+}

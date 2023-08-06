@@ -19,3 +19,7 @@ struct expression *new_float(float f);
 struct expression *new_integer(int i);
 
 struct expression *new_boolean(bool b);
+
+bool check_equals(struct expression *left, struct expression *right);
+
+char *get_type_name(int type);
