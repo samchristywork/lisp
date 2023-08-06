@@ -19,3 +19,9 @@ struct expression {
   struct expression *children;
   int n;
 };
+
+struct environment {
+  char *symbol;
+  struct expression *value;
+  struct environment *next;
+};

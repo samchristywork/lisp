@@ -58,3 +58,11 @@ void print_tree(struct expression *e, int depth) {
     }
   }
 }
+
+void print_env(struct environment *env) {
+  while (env->symbol != NULL) {
+    printf("  %s = ", env->symbol);
+    print_expression(env->value);
+    env = env->next;
+  }
+}
