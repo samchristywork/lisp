@@ -1,3 +1,6 @@
+#ifndef NODE_H
+#define NODE_H
+
 #include <stdbool.h>
 
 enum token_type { LPAREN, RPAREN, ATOM };
@@ -25,3 +28,5 @@ struct environment {
   struct expression *value;
   struct environment *next;
 };
+
+#endif

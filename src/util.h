@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include "print.h"
 
 int find_matching_paren(struct token *tokens, int n, int i);
@@ -23,3 +26,5 @@ struct expression *new_boolean(bool b);
 bool check_equals(struct expression *left, struct expression *right);
 
 char *get_type_name(int type);
+
+#endif
