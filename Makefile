@@ -1,5 +1,5 @@
 CC := gcc
-LIBS :=
+LIBS := -lm
 CFLAGS := -I src/
 
 .PHONY: all
@@ -23,7 +23,7 @@ run:
 .PHONY: watch
 watch:
 	make clean
-	find src/ | entr -s 'make debug && ./build/main'
+	git ls-files | entr -s 'make debug && ./build/main'
 
 .PHONY: list
 list:
