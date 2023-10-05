@@ -68,7 +68,7 @@ void add_atom_child(struct expression *e, char *value) {
     e->n++;
     e->children = realloc(e->children, sizeof(struct expression) * e->n);
     e->children[e->n - 1].type = FLOAT;
-    e->children[e->n - 1].floating = atoi(value);
+    e->children[e->n - 1].floating = atof(value);
     e->children[e->n - 1].children = NULL;
     e->children[e->n - 1].n = 0;
     return;
